@@ -130,6 +130,7 @@ Ripple.prototype.newFrame = function(srcPixels) {
 
 var img;
 var video;
+var ctracker;
 var ripple;
 
 function preload() {
@@ -142,12 +143,27 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(320, 200);
 
+  ctracker = new clm.tracker();
+  ctracker.init(pModel);
+  ctracker.start(video.elt);
+
   ripple = new Ripple(320, 200);
+
+  noStroke();
 }
 
 function draw() {
   // image(img, 0, 0);
   image(video, 0, 0);
+  var positions = ctracker.getCurrentPosition();
+
+  for (var i=0; i<positions.length; i++) {
+    // set the color of the ellipse based on position on screen
+    fill(map(positions[i][0], width*0.33, width*0.66, 0, 255), map(positions[i][1], height*0.33, height*0.66, 0, 255), 255);
+    // draw ellipse at each position point
+    var val = 4;
+    ellipse(positions[i][0], positions[i][1], val, val);
+  }
   loadPixels();
   pixels.set(ripple.newFrame(pixels));
   updatePixels();
