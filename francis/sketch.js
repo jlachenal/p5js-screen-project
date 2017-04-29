@@ -129,6 +129,7 @@ Ripple.prototype.newFrame = function(srcPixels) {
 }
 
 var img;
+var video;
 var ripple;
 
 function preload() {
@@ -136,12 +137,17 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(320, 320);
-  ripple = new Ripple(320, 320);
+  createCanvas(320, 200);
+
+  video = createCapture(VIDEO);
+  video.size(320, 200);
+
+  ripple = new Ripple(320, 200);
 }
 
 function draw() {
-  image(img, 0, 0);
+  // image(img, 0, 0);
+  image(video, 0, 0);
   loadPixels();
   pixels.set(ripple.newFrame(pixels));
   updatePixels();
