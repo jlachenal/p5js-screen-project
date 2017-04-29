@@ -48,11 +48,17 @@ Brush.prototype.pavar = function() {
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(720, 1280);
   background(255);
   for (var i = 0; i < 50; i++) {
     brushes.push(new Brush());
   }
+}
+
+var fs = false;
+function keyPressed() {
+  fs = !fs;
+  fullscreen(fullscreen);
 }
 
 function draw() {
