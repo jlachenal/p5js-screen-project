@@ -32,14 +32,8 @@ function mouseClicked() {
 
 
 function draw() {
-  // background(0);
-  // PImage img;
-  // img = loadImage('bg.jpg');
   // background(img);
-  // background(img);
-  image(img, 0, 0);
-  // image =  ;
-  // clean();
+  background(img);
   var star;
   for (var g = 0; g < starsgroups.length; g++) {
     var stars = starsgroups[g];
@@ -51,8 +45,8 @@ function draw() {
       }
       fill(255,255,255,star.alpha);
       ellipse(star.x, star.y, 5, 5);
-      star.y = star.y - 0.5;
-      star.alpha = star.alpha - 0.8;
+      star.y = star.y - 0.3;
+      star.alpha = star.alpha - 0.5;
     }
   }
 }
