@@ -32,7 +32,6 @@ function mouseClicked() {
 
 
 function draw() {
-  // background(img);
   background(img);
   var star;
   for (var g = 0; g < starsgroups.length; g++) {
