@@ -112,20 +112,26 @@ function draw() {
 
   //// overlay video head with low opacity
   tint(255, 20);
-  image(video, 40, 880, 640, 400);
+  image(video, 0, 830, 720, 450);
   noTint();
 
   //// draw into ripple layer and distort
-  rippleLayer.image(canvas, 0, 0, 320, 200, 40, 880, 640, 400);
+  rippleLayer.image(canvas, 0, 0, 320, 200, 0, 830, 720, 450);
   rippleLayer.loadPixels();
   rippleLayer.pixels.set(ripple.newFrame(rippleLayer.pixels));
   rippleLayer.updatePixels();
-  tint(255, 200);
-  image(rippleLayer, 40, 880, 640, 400);
+  tint(255, 128);
+  image(rippleLayer, 0, 830, 720, 450);
   noTint();
 
   //// overlay mountains and land
   image(fgImage, 0, 0, 720, 1280);
+}
+
+function keyTyped() {
+  if (key === 'f') {
+    fullscreen(true);
+  }
 }
 
 function mousePressed() {
